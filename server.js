@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(helmet.noSniff());// user story #1
+app.use(helmet.xssFilter());// user story #2
 
 //Index page (static HTML)
 app.route('/')
