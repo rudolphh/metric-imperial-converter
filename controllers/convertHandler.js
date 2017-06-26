@@ -10,15 +10,13 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
     var result;
-
     result = input.match(/\d+([\/.]\d+)?/g);
-
     return result;
   };
 
   this.getUnit = function(input) {
     var result;
-
+    result = input.match(/[a-zA-Z]+/g);
     return result;
   };
 
