@@ -34,9 +34,16 @@ function ConvertHandler() {
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
 
-    return result;
+    var spell = {};
+    spell['gal'] = 'gallons';
+    spell['l'] = 'liters';
+    spell['lbs'] = 'pounds';
+    spell['kg'] = 'kilograms';
+    spell['mi'] = 'kilometers';
+    spell['km'] = 'miles';
+
+    return spell[unit];
   };
 
   this.convert = function(initNum, initUnit) {
