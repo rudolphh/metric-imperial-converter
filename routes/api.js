@@ -25,7 +25,18 @@ module.exports = function (app) {
       var returnUnit = convertHandler.getReturnUnit(initUnit);
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
 
-      res.json({ returnUnit: returnUnit });
+      if(initNum.length === 2){
+        initNum = initNum[0]/initNum[1];
+      } else initNum = initNum[0]/1;
+
+      res.json({
+        initNum: initNum,
+        initUnit: initUnit,
+        returnNum: returnNum,
+        returnUnit: returnUnit,
+        string: toString
+      });
+
     });
 
 };

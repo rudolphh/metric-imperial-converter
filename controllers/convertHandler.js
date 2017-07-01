@@ -10,7 +10,7 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
     var result;
-    result = input.match(/\d+([\/.]\d+)?/g).toString();
+    result = input.match(/\d+([\/.]\d+)?/g);
     return result;
   };
 
