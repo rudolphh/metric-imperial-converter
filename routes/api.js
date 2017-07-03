@@ -21,13 +21,13 @@ module.exports = function (app) {
       var initNum = convertHandler.getNum(input);
       var initUnit = convertHandler.getUnit(input);
 
-      var returnNum = convertHandler.convert(initNum, initUnit);
-      var returnUnit = convertHandler.getReturnUnit(initUnit);
-      var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
-
       if(initNum.length === 2){
         initNum = initNum[0]/initNum[1];
       } else initNum = initNum[0]/1;
+      
+      var returnNum = convertHandler.convert(initNum, initUnit);
+      var returnUnit = convertHandler.getReturnUnit(initUnit);
+      var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
 
       res.json({
         initNum: initNum,

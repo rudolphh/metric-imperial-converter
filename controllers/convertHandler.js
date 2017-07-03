@@ -52,6 +52,16 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     var result;
 
+    initUnit = initUnit.toLowerCase();
+    console.log(initNum);
+
+    if(initUnit === 'gal') result = initNum * galToL;
+    if(initUnit === 'l') result = initNum / galToL;
+    if(initUnit === 'lbs') result = initNum * lbsToKg;
+    if(initUnit === 'kg') result = initNum / lbsToKg;
+    if(initUnit === 'mi') result = initNum * miToKm;
+    if(initUnit === 'km') result = initNum / miToKm;
+
     return result;
   };
 
