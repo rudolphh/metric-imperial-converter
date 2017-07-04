@@ -53,7 +53,6 @@ function ConvertHandler() {
     var result;
 
     initUnit = initUnit.toLowerCase();
-    console.log(initNum);
 
     if(initUnit === 'gal') result = initNum * galToL;
     if(initUnit === 'l') result = initNum / galToL;
@@ -68,6 +67,8 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
 
+    result = initNum + " " + this.spellOutUnit(initUnit) + " converts to " +
+             returnNum + " " + this.spellOutUnit(returnUnit);
     return result;
   };
 
