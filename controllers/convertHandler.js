@@ -16,8 +16,10 @@ function ConvertHandler() {
 
   this.getUnit = function(input) {
     var result;
-    result = input.match(/[a-zA-Z]+/g).toString();
-    return result;
+    //result = input.match(/[a-zA-Z]+/g);
+    //return result == null ? result : result.toString();
+    result = (input.match(/[a-zA-Z]/) || []).pop();
+    return result !== '' ? input.substring(input.indexOf(result), input.length) : result;
   };
 
   this.getReturnUnit = function(initUnit) {
@@ -30,7 +32,7 @@ function ConvertHandler() {
     unit['mi'] = 'km';
     unit['km'] = 'mi';
 
-    return unit[initUnit.toLowerCase()];
+    return initUnit == null ? null : unit[initUnit.toLowerCase()];
   };
 
   this.spellOutUnit = function(unit) {
@@ -40,8 +42,8 @@ function ConvertHandler() {
     spell['l'] = 'liters';
     spell['lbs'] = 'pounds';
     spell['kg'] = 'kilograms';
-    spell['mi'] = 'kilometers';
-    spell['km'] = 'miles';
+    spell['mi'] = 'miles';
+    spell['km'] = 'kilometers';
 
     return spell[unit];
   };
@@ -52,7 +54,7 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     var result;
 
-    initUnit = initUnit.toLowerCase();
+    if(initUnit !== null) initUnit = initUnit.toLowerCase();
 
     if(initUnit === 'gal') result = initNum * galToL;
     if(initUnit === 'l') result = initNum / galToL;
