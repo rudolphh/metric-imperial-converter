@@ -29,7 +29,6 @@ module.exports = function (app) {
 
       var returnNum = convertHandler.convert(initNum, initUnit);
       var returnUnit = convertHandler.getReturnUnit(initUnit);
-      var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
 
       if(!returnUnit && !initNum){
         res.send('invalid number and unit');
@@ -38,6 +37,7 @@ module.exports = function (app) {
       } else if (!initNum){
         res.send('invalid number');
       } else {
+        var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
 
         res.json({
           initNum: initNum,

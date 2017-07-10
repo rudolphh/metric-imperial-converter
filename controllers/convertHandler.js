@@ -32,7 +32,7 @@ function ConvertHandler() {
     unit['mi'] = 'km';
     unit['km'] = 'mi';
 
-    return initUnit == null ? null : unit[initUnit.toLowerCase()];
+    return initUnit == '' ? null : typeof unit[initUnit.toLowerCase()] !== 'undefined' ? unit[initUnit.toLowerCase()] : null;
   };
 
   this.spellOutUnit = function(unit) {
@@ -44,6 +44,8 @@ function ConvertHandler() {
     spell['kg'] = 'kilograms';
     spell['mi'] = 'miles';
     spell['km'] = 'kilometers';
+
+    if(unit !== '') unit = unit.toLowerCase();
 
     return spell[unit];
   };
