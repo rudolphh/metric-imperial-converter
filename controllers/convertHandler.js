@@ -10,9 +10,10 @@ function ConvertHandler() {
 
   this.getNum = function(input) {
 
-    // get the part of the string before the first letter
+    // the part before the first letter should be a number
     var numStr = input.slice(0, input.match(/[a-z]/i).index);
 
+    // if its not a number, default to 1
     if(numStr === '') { return 1; }
 
     numStr = numStr.split('/');
@@ -24,11 +25,11 @@ function ConvertHandler() {
   };
 
   this.getUnit = function(input) {
-    var result;
-    //result = input.match(/[a-zA-Z]+/g);
-    //return result == null ? result : result.toString();
-    result = (input.match(/[a-zA-Z]/) || []).pop();
-    return result !== '' ? input.substring(input.indexOf(result), input.length) : result;
+
+    var units = 'l gal kg lbs mi km';
+    var unitStr = input.toLowerCase().slice(input.match(/[a-z]/i).index);
+
+    return units.indexOf(unitStr) >= 0 ? unitStr : 'invalid unit';
   };
 
   this.getReturnUnit = function(initUnit) {
