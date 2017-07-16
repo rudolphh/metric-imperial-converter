@@ -81,7 +81,7 @@ function ConvertHandler() {
     var result;
 
     result = initNum + " " + this.spellOutUnit(initUnit) + " converts to " +
-             returnNum + " " + this.spellOutUnit(returnUnit);
+             returnNum.toFixed(5) + " " + this.spellOutUnit(returnUnit);
     return result;
   };
 
