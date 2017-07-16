@@ -17,9 +17,10 @@ function ConvertHandler() {
     if(numStr === '') { return 1; }
 
     numStr = numStr.split('/');
+
     switch(numStr.length){
       case 1: return +numStr;
-      case 2: return +numStr[0] / +numStr[1];
+      case 2: return +numStr[1] === 0 ? 'invalid number' : +numStr[0] / +numStr[1];
       default: return 'invalid number';
     }
   };
@@ -27,9 +28,9 @@ function ConvertHandler() {
   this.getUnit = function(input) {
 
     var units = 'l gal kg lbs mi km';
-    var unitStr = input.toLowerCase().slice(input.match(/[a-z]/i).index);
+    var unitStr = input.slice(input.match(/[a-z]/i).index);
 
-    return units.indexOf(unitStr) >= 0 ? unitStr : 'invalid unit';
+    return units.indexOf(unitStr.toLowerCase()) >= 0 ? unitStr : 'invalid unit';
   };
 
   this.getReturnUnit = function(initUnit) {
@@ -42,7 +43,7 @@ function ConvertHandler() {
     unit['mi'] = 'km';
     unit['km'] = 'mi';
 
-    return initUnit == '' ? null : typeof unit[initUnit.toLowerCase()] !== 'undefined' ? unit[initUnit.toLowerCase()] : null;
+    return unit[initUnit.toLowerCase()];
   };
 
   this.spellOutUnit = function(unit) {
@@ -55,9 +56,7 @@ function ConvertHandler() {
     spell['mi'] = 'miles';
     spell['km'] = 'kilometers';
 
-    if(unit !== '') unit = unit.toLowerCase();
-
-    return spell[unit];
+    return spell[unit.toLowerCase()];
   };
 
   this.convert = function(initNum, initUnit) {
