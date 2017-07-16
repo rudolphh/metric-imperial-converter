@@ -9,9 +9,18 @@
 function ConvertHandler() {
 
   this.getNum = function(input) {
-    var result;
-    result = input.match(/\d+([\/.]\d+)?/g);
-    return result;
+
+    // get the part of the string before the first letter
+    var numStr = input.slice(0, input.match(/[a-z]/i).index);
+
+    if(numStr === '') { return 1; }
+
+    numStr = numStr.split('/');
+    switch(numStr.length){
+      case 1: return +numStr;
+      case 2: return +numStr[0] / +numStr[1];
+      default: return 'invalid number';
+    }
   };
 
   this.getUnit = function(input) {
